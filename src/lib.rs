@@ -323,12 +323,14 @@ impl GameSniffer {
         info!("received");
         trace!(data = BASE64_STANDARD.encode(&command.proto_data), "data");
 
+        /* This should return all commands so we comment this shit out :skull:
         if !matches!(
             command.command_id,
             command_id::GET_PLAYER_TOKEN_RSP | command_id::ACHIEVEMENT_ALL_DATA_NOTIFY
         ) {
             return None;
         }
+        */
 
         if command.command_id == command_id::GET_PLAYER_TOKEN_RSP {
             let token_command = command.parse_proto::<GetPlayerTokenRsp>().unwrap();
